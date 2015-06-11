@@ -1,3 +1,4 @@
+# -*- coding: utf-8  -*-
 Zone::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -6,7 +7,18 @@ Zone::Application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
-  config.action_mailer.default_url_options = {host: 'localhost', port: 3000 }
+#  config.action_mailer.default_url_options = {host: 'localhost', port: 3000 }
+  # mail config
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address        => 'stmp.gmail.com', # SMTPサーバのホスト名
+    :port           => 587,                 # SMTPサーバに接続するポート
+    :user_name      => ENV['SMTP_MAIL'],              # ユーザ名
+    :password       => ENV['SMTP_PASS'],   # パスワード
+    :authentication => :plain,               # 認証が必要なサーバの場合、特定の認証方式をここで指定
+    :enable_starttls_auto => true
+  }
 
   # Do not eager load code on boot.
   config.eager_load = false
