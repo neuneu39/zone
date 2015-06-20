@@ -11,12 +11,14 @@ Zone::Application.configure do
   # mail config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.perform_deliveries = true
+  
   config.action_mailer.smtp_settings = {
-    :address        => 'stmp.gmail.com', # SMTPサーバのホスト名
+    :address        => "smtp.gmail.com", # SMTPサーバのホスト名
     :port           => 587,                 # SMTPサーバに接続するポート
-    :user_name      => ENV['SMTP_MAIL'],              # ユーザ名
-    :password       => ENV['SMTP_PASS'],   # パスワード
     :authentication => :plain,               # 認証が必要なサーバの場合、特定の認証方式をここで指定
+    :user_name      => ENV["SMTP_MAIL"],      # ユーザ名
+    :password       => ENV["SMTP_PASS"],   # パスワード
     :enable_starttls_auto => true
   }
 
@@ -28,7 +30,7 @@ Zone::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+ # config.action_mailer.raise_deliver_errors = false #0614 comment out
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
