@@ -1,20 +1,16 @@
 Zone::Application.routes.draw do
-  get 'users/show'
 
-
-
-#  root 'static_pages#index'
   root 'static_pages#home'
+  #for devise 
+  devise_for :users, :controllers => {
+    :registrations => "registrations"
+  }
+  #users
+  resources :users, only: [:show]
+  get 'users/show'
   match '/help',     to: 'static_pages#help',     via: 'get'
   match '/about',    to: 'static_pages#about',    via: 'get'
   match '/contact',  to: 'static_pages#contact',  via: 'get'
-
-  #users
-
-
-  #for devise 
-  devise_for :users
-  resources :users, only: [:show]
 
   #get 'static_pages/index'
   # The priority is based upon order of creation: first created -> highest priority.

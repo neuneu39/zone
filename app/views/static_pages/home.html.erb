@@ -1,5 +1,15 @@
 <% provide(:title, 'Home') %>
-<h1>StaticPages#home</h1>
-<p>
- 時間管理のための第一歩です！！
-</p>
+
+<div class="center jumbotron">
+  <h1>Welcome to the Zone</h1>
+
+  <h2>
+	This is the home page for the Zone
+  </h2>
+  <p>
+	時間管理のための第一歩です！！
+  </p>
+
+  <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+</div>  
+
