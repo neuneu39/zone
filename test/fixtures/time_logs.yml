@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_time: 2015-07-09 08:59:37
+  stop_time: 2015-07-09 08:59:37
+  content: MyString
+  user_id: 1
+
+two:
+  start_time: 2015-07-09 08:59:37
+  stop_time: 2015-07-09 08:59:37
+  content: MyString
+  user_id: 1
