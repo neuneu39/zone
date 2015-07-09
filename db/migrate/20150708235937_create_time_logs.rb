@@ -8,5 +8,6 @@ class CreateTimeLogs < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :time_logs, [:user_id, :created_at]
   end
 end

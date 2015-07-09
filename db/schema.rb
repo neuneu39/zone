@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150628022521) do
+ActiveRecord::Schema.define(version: 20150708235937) do
+
+  create_table "time_logs", force: true do |t|
+    t.time     "start_time"
+    t.time     "stop_time"
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "time_logs", ["user_id", "created_at"], name: "index_time_logs_on_user_id_and_created_at"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
