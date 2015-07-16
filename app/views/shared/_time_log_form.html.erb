@@ -1,0 +1,10 @@
+<%= form_for(@time_log) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+    <div class="field">
+      <%= f.text_area :content, placeholder: "何をしていますか？" %>
+    </div>
+	<% @current = Time.now %>
+	<%= @current.strftime('%m月%d日　%H:%M' ) %>
+	<%= f.hidden_field :start_time, :value => @current %>
+  <%= f.submit "Start", class: "btn btn-lg btn-primary" %>
+<% end %>

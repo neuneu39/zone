@@ -6,16 +6,16 @@ Zone::Application.routes.draw do
     :registrations => "registrations"
   }
   #users
-  resources :users, only: [:show]
+  resources :users, only: [:show, :index, :destroy]
+  resources :time_logs, only: [:create, :show, :index, :edit, :destroy, :update]
   get 'users/show'
   match '/help',     to: 'static_pages#help',     via: 'get'
   match '/about',    to: 'static_pages#about',    via: 'get'
   match '/contact',  to: 'static_pages#contact',  via: 'get'
-
+  match '/update',  to: 'static_pages#update',  via: 'post'
   #get 'static_pages/index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

@@ -1,0 +1,7 @@
+<% if @log_list_items.any? %>
+ <ol class="timelogs">
+   <%= render partial: 'shared/log_list_item', collection: @log_list_items %>
+   <%= 'this is @log_list_items' %>
+   <%= @log_list_items.nil?%>
+ </ol>
+<% end %> 

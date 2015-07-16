@@ -1,15 +1,28 @@
 <% provide(:title, 'Home') %>
-
+<% if signed_in? %>
+ <div class= "row">
+   <aside class="col-md-4">
+	 <section>
+	   <%= render 'shared/user_info' %>
+	 </section>
+	 <section>
+	   <%= render 'shared/time_log_form' %>
+	 </section>
+   </aside>
+   <div class="col-md-8">
+     <h3>My  Time Logs</h3>
+	 <%= render 'shared/log_list' %>
+   </div>
+ </div>
+<% else %>
 <div class="center jumbotron">
   <h1>Welcome to the Zone</h1>
 
-  <h2>
-	This is the home page for the Zone
-  </h2>
+  <h2>	This is the home page for the Zone</h2>
   <p>
 	時間管理のための第一歩です！！
   </p>
 
   <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
 </div>  
-
+<% end %>

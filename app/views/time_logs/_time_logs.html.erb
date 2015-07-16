@@ -1,0 +1,7 @@
+<li>
+  <span class="content"><%= time_logs.content %></span>
+  <span class="time"><%= time_logs.started_at %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(time_logs.created_at) %> ago.
+  </span>
+</li>
