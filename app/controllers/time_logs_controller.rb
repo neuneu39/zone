@@ -2,12 +2,17 @@ class TimeLogsController < ApplicationController
   before_filter :authenticate_user!
   before_action :signed_in_user
   before_action :set_time_log, only: [:show, :edit, :update, :destroy]
+
   def create
     @time_log = current_user.time_logs.build(time_log_params)
-    if @time_log.save
+    @log_list_items = current_user.log_list
+    
+    if @time_log.save && !session[:log_flag]
       flash[:success] = "Start Logging!"
+      session[:log_flag] = "true"
       redirect_to root_url
-    else
+    else 
+      session[:log_flag] = nil
       render 'static_pages/home'
     end
   end
@@ -22,6 +27,7 @@ class TimeLogsController < ApplicationController
   def update
     respond_to do |format|
       if @time_log.update(time_log_params)
+        session[:log_flag] = nil
         format.html {redirect_to root_url, notice: 'Successfully Updated.'}
       else
         render 'static_pages/home'

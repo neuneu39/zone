@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
-  has_many :time_logs, dependent: :destroy
+  has_many :current_logs
+  has_many :time_logs, through: :current_logs
+  
+#  has_one :current_log
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

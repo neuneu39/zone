@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  time_log_id: 1
+  logging_flag: 
+  default: 
+
+two:
+  user_id: 1
+  time_log_id: 1
+  logging_flag: 
+  default: 

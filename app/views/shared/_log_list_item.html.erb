@@ -21,6 +21,10 @@
     Posted <%= time_ago_in_words(log_list_item.created_at) %> ago.
   </span>
   <br>
+<%
+=begin
+%>   
+ここではまで編集できる機能は実装していない
 <%= form_for(@time_log, url: { action: :update }) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 	<% @current = Time.now %>
@@ -29,6 +33,9 @@
 	<%= f.hidden_field :stop_time, :value => @current %>
   <%= f.submit "Stop", class: "btn btn-lg btn-danger" %>
 <% end %>
+<%
+=end
+%>   
 
 </li>
 
