@@ -7,12 +7,8 @@ class StaticPagesController < ApplicationController
       if !session[:log_flag]
         @time_log = current_user.time_logs.build
       else
-        #       @time_log = current_user.time_logs.build
         @time_log = current_user.time_logs
-#        render 'static_pages/home'
 #        redirect_to root_url success:"session is nil."
-
-        #        render 'time_logs'
       end
     end
   end
