@@ -1,13 +1,13 @@
-<h1>Users#show</h1>
+<h1>Your Profile</h1>
 <%= @user.email %>
 <h1>
   <%= @user.name %>
 </h1>  
-  <div class="col-md-8">
+  <div class="col-md-8"> 
     <% if @user.time_logs.any? %>
-      <ol class="time_logs">
-        <%= render 'shared/time_log_form' %>
-      </ol>
+      <ol class="time_logs"> 
+<!--        <%= render 'shared/log_list' %> -->
+      </ol> 
     <% end %>
   </div>
 <p>Find me in app/views/users/show.html.erb</p>

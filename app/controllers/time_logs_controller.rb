@@ -7,30 +7,38 @@ class TimeLogsController < ApplicationController
     @time_log = current_user.time_logs.build(time_log_params)
     @log_list_items = current_user.log_list
     
-    if @time_log.save && !session[:log_flag]
-      flash[:success] = "Start Logging!"
-      session[:log_flag] = "true"
-      redirect_to root_url
-    else 
-      session[:log_flag] = nil
-      render 'static_pages/home'
-    end
+  #  respond_to do |format|
+      if @time_log.save && !session[:log_flag]
+        flash[:success] = "Start Logging!"
+        session[:log_flag] = "true"
+        redirect_to root_url
+      else 
+        session[:log_flag] = nil
+       @log_list_items = []
+        render 'static_pages/home'
+      end
+   # end
+  end
+  
+  def show
+    redirect_to root_url
   end
 
-#  def show
-#   @time_log = 
-#  end
-
   def index
+  end
+
+  def edit
+#    session[:log_flag] = nil
+#    reset_session
   end
 
   def update
     respond_to do |format|
       if @time_log.update(time_log_params)
+        format.html { redirect_to @time_log, notice: 'Successfully Updated!!!.' }
         session[:log_flag] = nil
-        format.html {redirect_to root_url, notice: 'Successfully Updated.'}
       else
-        render 'static_pages/home'
+        format.html { render :edit }
       end
     end
   end

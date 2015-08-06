@@ -1,0 +1,18 @@
+<%= form_for log_list_item do |f| %>
+
+    <%= render 'shared/error_messages', object: f.object %>
+	<% @current = Time.now %>
+	<%= @current.strftime('%m月%d日　%H:%M' ) %>
+  　<div class="field">
+      <%= f.text_area :content, placeholder: "何をしていますか？" %>
+    </div>
+    <%= f.submit "Start", class: "btn btn-lg btn-primary" %>
+    セッション : <%= session[:log_flag] %>
+
+	<% @current = Time.now %>
+	<%= @current.strftime('%m月%d日　%H:%M' ) %>
+    <%= f.hidden_field :stop_time, :value => @current %>
+    <%= f.submit "Stop", class: "btn btn-lg btn-danger" %>
+    セッション : <%= session[:log_flag] %>
+
+<% end %>

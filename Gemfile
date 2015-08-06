@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-ruby '2.2.2'
-
+#ruby '2.2.2'
+ruby '2.1.6'
 gem 'rails', '4.1.0'
 gem 'bootstrap-sass', '3.3.1'
 gem 'sprockets', '2.11.0'

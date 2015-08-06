@@ -4,6 +4,8 @@
 <span>
   <%= link_to "view my profile", current_user %>
 </span>
+<br>
 <span>
-  <%= pluralize(current_user.time_logs.count, "time_log") %>
+  You had 
+  <%=  pluralize(current_user.time_logs.count, "time_log") %>
 </span>

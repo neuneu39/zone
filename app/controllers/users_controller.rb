@@ -1,7 +1,14 @@
 class UsersController < ApplicationController
+  
+  def index
+    @user = User.find(params[:id])
+    @time_log = @user.time_logs
+  end
+
   def show
     @user = User.find(params[:id])
-    @time_logs = @user.time_logs
+    @time_log = @user.time_logs || []
+    @log_list_items = current_user.log_list
   end
   
   def create

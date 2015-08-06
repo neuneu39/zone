@@ -1,26 +1,29 @@
 <li id="<%= log_list_item.id %>">
 
-  <%= link_to "TimeLogger", log_list_item.user %>
-  <span class="user">
-    <%= link_to log_list_item.user.name, log_list_item.user %>
-  </span>
    <span class="user">
-    <%= link_to "edit", log_list_item.user %>
+	id = <%= log_list_item.id %> 
+    <%= link_to "Stop & Edit", edit_time_log_path(log_list_item) %>
   </span>
   <br>
   <span class="content"> Comments: <%= log_list_item.content %></span>
   <br>
   <br>
-  <% @Logging_time = log_list_item.start_time %>
-  <span class="content"> Start_Time: <%= @Logging_time %></span>
+  <% @Start_time = log_list_item.start_time %>
+  <span class="content"> Start_Time: <%= @Start_time %></span>
   <br>
-  <% @Logging_time = log_list_item.stop_time %>
-  <span class="content"> Stop_Time: <%= @Logging_time %></span>
+  <% @Stop_time = log_list_item.stop_time %>
+  <span class="content"> Stop_Time: <%= @Stop_time %></span>
   <br>
+  <% if !@Stop_time.nil? %>
+    <% @Logged_time = @Stop_time - @Start_time %>
+    <span class="content"> Logged_time: <%=Time.at(@Logged_time).utc.strftime("%X") %></span>
+    <br>
+  <% end %>
   <span class="timestamp">
     Posted <%= time_ago_in_words(log_list_item.created_at) %> ago.
   </span>
   <br>
+セッション　<%= session[:log_flag] %>
 <%
 =begin
 %>   
