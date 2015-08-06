@@ -1,24 +1,27 @@
 <li id="<%= log_list_item.id %>">
 
-   <span class="user">
-	id = <%= log_list_item.id %> 
-    <%= link_to "Stop & Edit", edit_time_log_path(log_list_item) %>
+ <span class="user">
+   id = <%= log_list_item.id %> 
+   <% @Stop_time = log_list_item.stop_time %>
+   <% @Start_time = log_list_item.start_time %>
+
+   <% if !@Stop_time.nil? %>
+     <%= link_to "Edit", edit_time_log_path(log_list_item) %>
+     <br>
+     <% @Logged_time = @Stop_time - @Start_time %>
+     <span class="content"> Logged_time: <%=Time.at(@Logged_time).utc.strftime("%X") %></span>
+    <br>
+   <% else %>
+      <%= link_to "Stop", edit_time_log_path(log_list_item) %>
+  <% end %>
   </span>
   <br>
   <span class="content"> Comments: <%= log_list_item.content %></span>
   <br>
-  <br>
-  <% @Start_time = log_list_item.start_time %>
   <span class="content"> Start_Time: <%= @Start_time %></span>
   <br>
-  <% @Stop_time = log_list_item.stop_time %>
   <span class="content"> Stop_Time: <%= @Stop_time %></span>
   <br>
-  <% if !@Stop_time.nil? %>
-    <% @Logged_time = @Stop_time - @Start_time %>
-    <span class="content"> Logged_time: <%=Time.at(@Logged_time).utc.strftime("%X") %></span>
-    <br>
-  <% end %>
   <span class="timestamp">
     Posted <%= time_ago_in_words(log_list_item.created_at) %> ago.
   </span>
